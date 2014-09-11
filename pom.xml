@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
@@ -8,7 +7,7 @@
 	<version>1.0.0-SNAPSHOT</version>
 
 	<name>JSNI Utilities</name>
-	<description>JSNI Utilities for GWT</description>
+	<description>JSNI utilities for GWT</description>
 	<url>https://github.com/gjordi/gwt-jsni</url>
 
 	<organization>
@@ -38,7 +37,8 @@
 		<connection>scm:git:git@github.com:gjordi/gwt-jsni.git</connection>
 		<developerConnection>scm:git:git@github.com:gjordi/gwt-jsni.git</developerConnection>
 		<url>git@github.com:gjordi/gwt-jsni.git</url>
-	</scm>
+	  <tag>HEAD</tag>
+  </scm>
 
 	<issueManagement>
 		<system>github</system>
@@ -88,6 +88,28 @@
 					<target>1.7</target>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+					<useReleaseProfile>false</useReleaseProfile>
+					<releaseProfiles>release</releaseProfiles>
+					<goals>deploy</goals>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<version>1.6.2</version>
+				<extensions>true</extensions>
+				<configuration>
+					<serverId>ossrh</serverId>
+					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+					<autoReleaseAfterClose>true</autoReleaseAfterClose>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
@@ -99,7 +121,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-source-plugin</artifactId>
-						<version>2.2.1</version>
+						<version>2.3</version>
 						<executions>
 							<execution>
 								<id>attach-sources</id>
