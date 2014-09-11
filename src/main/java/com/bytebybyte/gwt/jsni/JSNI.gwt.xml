@@ -1,0 +1,9 @@
+<module>
+
+	<!-- Required modules. -->
+	<inherits name="com.google.gwt.user.User" />
+
+	<!-- Source paths. -->
+	<source path="client" />
+
+</module>
